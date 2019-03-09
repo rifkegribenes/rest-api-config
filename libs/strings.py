@@ -21,9 +21,5 @@ def refresh():
 def gettext(name):
     return cached_strings[name]
 
-def set_default_locale(locale):
-    global default_locale
-    default_locale = locale
-
 
 refresh()

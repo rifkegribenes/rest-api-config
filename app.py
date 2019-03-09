@@ -1,4 +1,3 @@
-import os
 from flask import Flask, jsonify
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
@@ -13,10 +12,14 @@ from resources.item import Item, ItemList
 from resources.store import Store, StoreList
 from resources.confirmation import Confirmation, ConfirmationByUser
 
+
 app = Flask(__name__)
 load_dotenv(".env", verbose=True)
-app.config.from_object("default_config")
-app.config.from_envvar("APPLICATION_SETTINGS")
+app.config.from_object("default_config")  # load default configs from default_config.py
+app.config.from_envvar(
+    "APPLICATION_SETTINGS"
+)  # override with config.py (APPLICATION_SETTINGS points to config.py)
+
 api = Api(app)
 
 
